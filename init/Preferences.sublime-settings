@@ -25,7 +25,7 @@
 		"*.class",
 		"*.psd",
 		"*.db",
-		"*.sublime-*"
+		"*.sublime-*",
 		"Desktop.ini",
 		"*.pyc",
 		"._*",
