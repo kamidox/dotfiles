@@ -41,6 +41,9 @@ Plugin 'godlygeek/tabular'
 " let g:vim_markdown_folding_disabled=1
 
 Plugin 'Valloric/YouCompleteMe'
+map <Leader>jg :YcmCompleter GoTo<CR>
+map <Leader>jd :YcmCompleter GoToDefinition<CR>
+map <Leader>ji :YcmCompleter GoToInclude<CR>
 
 Plugin 'jiangmiao/auto-pairs'
 
