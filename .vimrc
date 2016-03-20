@@ -50,9 +50,9 @@ Plugin 'jiangmiao/auto-pairs'
 " quick google search
 Plugin 'szw/vim-g'
 
-Plugin 'vim-ruby/vim-ruby'
+" Plugin 'vim-ruby/vim-ruby'
 
-Plugin 'wlangstroth/vim-racket'
+" Plugin 'wlangstroth/vim-racket'
 
 " Plugin 'fatih/vim-go'
 
@@ -70,8 +70,20 @@ Plugin 'Chiel92/vim-autoformat'
 noremap <F3> :Autoformat<CR><CR>
 
 Plugin 'Lokaltog/vim-easymotion'
+" Disable default mappings"
+let g:EasyMotion_do_mapping = 0 
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-overwin-f2)
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
 
 Plugin 'rking/ag.vim'
+map <Leader>ag :Ag 
 
 Plugin 'vim-scripts/DrawIt'
 
@@ -96,22 +108,23 @@ let g:ctrlp_by_filename = 0
 " Plugin 'vim-scripts/cscope.vim'
 
 " Elm lang
-Plugin 'lambdatoast/elm.vim'
+" Plugin 'lambdatoast/elm.vim'
 
 " ansible yaml support
 Plugin 'chase/vim-ansible-yaml'
 
 " fireplace for clojure
-Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-classpath'
-Plugin 'tpope/vim-dispatch'
+" Plugin 'tpope/vim-fireplace'
+" Plugin 'tpope/vim-classpath'
+" Plugin 'tpope/vim-dispatch'
 
 " precision editing for s-expression
 Plugin 'guns/vim-sexp'
 
 " clojure runtime files
-Plugin 'guns/vim-clojure-static'
-Plugin 'guns/vim-clojure-highlight'
+" Plugin 'guns/vim-clojure-static'
+" Plugin 'guns/vim-clojure-highlight'
+
 Plugin 'kien/rainbow_parentheses.vim'
 
 " All of your Plugins must be added before the following line
@@ -276,4 +289,3 @@ noremap <leader>exh :! open http://www.phoenixframework.org/v0.9.0/docs<CR>
 noremap <leader>ehp :! open https://hex.pm<CR>
 
 noremap <leader>gh :! open https://github.com<CR>
-
