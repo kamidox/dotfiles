@@ -50,7 +50,7 @@ Plugin 'jiangmiao/auto-pairs'
 " quick google search
 Plugin 'szw/vim-g'
 
-" Plugin 'vim-ruby/vim-ruby'
+Plugin 'vim-ruby/vim-ruby'
 
 Plugin 'wlangstroth/vim-racket'
 
@@ -90,6 +90,7 @@ Plugin 'scrooloose/syntastic'
 
 " fuzzy file find
 Plugin 'kien/ctrlp.vim'
+let g:ctrlp_by_filename = 0
 
 " vim cscope
 " Plugin 'vim-scripts/cscope.vim'
