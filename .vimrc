@@ -37,8 +37,15 @@ map <C-n> :NERDTreeToggle<CR>
 map <Leader>n :NERDTree %:p:h<CR>
 
 Plugin 'godlygeek/tabular'
-" Plugin 'plasticboy/vim-markdown'
-" let g:vim_markdown_folding_disabled=1
+Plugin 'plasticboy/vim-markdown'
+let g:vim_markdown_no_default_key_mappings = 1
+let g:vim_markdown_toc_autofit = 1
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_folding_disabled=1
+" Open Table Of Content
+map <Leader>th :Toch<CR>
+" Format table
+map <Leader>ft :TableFormat<CR>
 
 Plugin 'Valloric/YouCompleteMe'
 map <Leader>jg :YcmCompleter GoTo<CR>
@@ -261,6 +268,8 @@ let g:sexp_enable_insert_mode_mappings = 0"
 
 " basic keymapping
 noremap <leader>c :! compass compile<CR>
+noremap <Leader>ff <PageDown>
+noremap <Leader>bb <PageUp>
 
 " elixir keymapping
 noremap <leader>ed :! mix deps.get<CR>
