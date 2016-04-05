@@ -57,7 +57,7 @@ Plugin 'jiangmiao/auto-pairs'
 " quick google search
 Plugin 'szw/vim-g'
 
-" Plugin 'vim-ruby/vim-ruby'
+Plugin 'vim-ruby/vim-ruby'
 
 " Plugin 'wlangstroth/vim-racket'
 
@@ -84,10 +84,9 @@ let g:EasyMotion_do_mapping = 0
 nmap s <Plug>(easymotion-overwin-f2)
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
-
 " JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
+map <Leader>jj <Plug>(easymotion-j)
+map <Leader>kk <Plug>(easymotion-k)
 
 Plugin 'rking/ag.vim'
 map <Leader>ag :Ag 
@@ -184,6 +183,7 @@ syntax on
 set cursorline
 " Make tabs as wide as two spaces
 set tabstop=2
+set shiftwidth=4
 set expandtab
 " Show “invisible” characters
 " set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
