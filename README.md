@@ -1,13 +1,4 @@
-# Tyr's dotfiles
-
-Below is my shell prompt:
-
-![Screenshot of my shell prompt](http://i.imgur.com/hBEsvYg.png)
-
-Below is my vim (Nerdtree, YouCompleteMe, UltiSnip and a lot more...):
-
-![Screenshot of my vim](http://i.imgur.com/gPvOSLP.png)
-
+## Joey's dotfiles
 
 
 This is a derived work from Mathias's dotfiles. Consider to use his setup directly. See: https://github.com/mathiasbynens/dotfiles.
@@ -16,7 +7,6 @@ Disclaimer: I have tuned the dotfiles for my own use. Some of the setup may not 
 
 Chaged to Mathias's dotfiles:
 
-* use [liquidprompt](https://github.com/nojhan/liquidprompt) for shell prompt.
 * use [vundle](https://github.com/gmarik/Vundle.vi://github.com/gmarik/Vundle.vim) for vim plugin management.
 * added lots of vim plugins.
 

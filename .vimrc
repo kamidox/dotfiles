@@ -51,6 +51,8 @@ Plugin 'Valloric/YouCompleteMe'
 map <Leader>jg :YcmCompleter GoTo<CR>
 map <Leader>jd :YcmCompleter GoToDefinition<CR>
 map <Leader>ji :YcmCompleter GoToInclude<CR>
+map <Leader>jr :YcmCompleter GoToReferences<CR>
+map <Leader>dd :YcmCompleter GetDoc<CR>
 
 Plugin 'jiangmiao/auto-pairs'
 
