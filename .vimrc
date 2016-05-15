@@ -122,16 +122,16 @@ let g:ctrlp_by_filename = 0
 Plugin 'chase/vim-ansible-yaml'
 
 " fireplace for clojure
-" Plugin 'tpope/vim-fireplace'
-" Plugin 'tpope/vim-classpath'
-" Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-classpath'
+Plugin 'tpope/vim-dispatch'
 
 " precision editing for s-expression
 Plugin 'guns/vim-sexp'
 
 " clojure runtime files
-" Plugin 'guns/vim-clojure-static'
-" Plugin 'guns/vim-clojure-highlight'
+Plugin 'guns/vim-clojure-static'
+Plugin 'guns/vim-clojure-highlight'
 
 Plugin 'kien/rainbow_parentheses.vim'
 
@@ -223,6 +223,19 @@ set showcmd
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
 
+" Code folder
+" za : Toggle folding at the current line.
+" zo : Open fold.
+" zc : Close fold.
+" zR : Close all folds.
+" zM : Open all folds.
+set foldmethod=indent
+" Keep all folds open when a file is opened
+augroup OpenAllFoldsOnFileOpen
+    autocmd!
+    autocmd BufRead * normal zR
+augroup END
+"
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
 	let save_cursor = getpos(".")
@@ -273,6 +286,11 @@ noremap <leader>c :! compass compile<CR>
 noremap <Leader>ff <PageDown>
 noremap <Leader>bb <PageUp>
 
+" search/replace keymapping
+noremap rc :%s///cg<Left><Left><Left><Left>
+noremap rr :%s///g<Left><Left><Left>
+noremap ri :%s///cig<Left><Left><Left><Left><Left>
+
 " elixir keymapping
 noremap <leader>ed :! mix deps.get<CR>
 noremap <leader>ec :! mix compile<CR>
@@ -282,7 +300,7 @@ noremap <leader>xt :! mix test<CR>
 " clojure keymapping
 noremap <leader>cd :! lein deps<CR>
 noremap <leader>cc :! lein compile<CR>
-noremap <leader>ce :! lein test<CR>
+noremap <leader>ct :! lein test<CR>
 noremap <leader>ce :Eval<CR>
 
 " golang keymapping
