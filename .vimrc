@@ -107,6 +107,14 @@ Plugin 'tpope/vim-surround'
 
 " do syntax check
 Plugin 'scrooloose/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " fuzzy file find
 Plugin 'kien/ctrlp.vim'
@@ -311,6 +319,8 @@ noremap <leader>gt :! make test<CR>
 " tcl keymapping
 noremap <leader>tt :set noexpandtab<CR>
 
+" javascript keymapping
+noremap <leader>jt :!jasmine-node .
 
 " web page
 noremap <leader>eh :! open http://elixir-lang.org/docs/stable/elixir/<CR>
