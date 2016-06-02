@@ -231,19 +231,6 @@ set showcmd
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
 
-" Code folder
-" za : Toggle folding at the current line.
-" zo : Open fold.
-" zc : Close fold.
-" zR : Close all folds.
-" zM : Open all folds.
-set foldmethod=indent
-" Keep all folds open when a file is opened
-augroup OpenAllFoldsOnFileOpen
-    autocmd!
-    autocmd BufRead * normal zR
-augroup END
-"
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
 	let save_cursor = getpos(".")
