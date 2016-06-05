@@ -88,6 +88,9 @@
 
     // Custom Globals
     "globals"       : {
-        "module": false
+        "module": false,
+        "exports": false,
+        "require": false,
+        "expect": false
     }        // additional predefined global variables
 }
