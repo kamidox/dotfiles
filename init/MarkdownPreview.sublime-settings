@@ -10,5 +10,6 @@
             "wikilinks",
             "admonition",
             "codehilite(guess_lang=False,pygments_style=emacs)"
-        ]
+        ],
+    "enable_mathjax": true
 }
