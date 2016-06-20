@@ -45,6 +45,10 @@
 	"font_size": 14,
 	"highlight_modified_tabs": true,
 	"hot_exit": false,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
 	"line_padding_bottom": 5,
 	"match_brackets": true,
 	"match_brackets_angle": true,
@@ -52,10 +56,6 @@
 	"rulers":
 	[
 		80
-	],
-	"ignored_packages":
-	[
-		"Vintage"
 	],
 	"show_encoding": true,
 	"show_line_endings": true,

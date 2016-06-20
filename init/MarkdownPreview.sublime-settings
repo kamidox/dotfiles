@@ -1,0 +1,14 @@
+{
+    "enabled_extensions": [
+            "extra",
+            "github",
+            "toc",
+            "headerid",
+            "meta",
+            "sane_lists",
+            "smarty",
+            "wikilinks",
+            "admonition",
+            "codehilite(guess_lang=False,pygments_style=emacs)"
+        ]
+}
