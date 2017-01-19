@@ -1,14 +1,16 @@
 # Add `~/bin` to the `$PATH`
-export PATH="$HOME/bin:$(brew --prefix coreutils)/libexec/gnubin:$PATH";
+export PATH="$HOME/bin:/usr/local/sbin:$(brew --prefix coreutils)/libexec/gnubin:$PATH";
 
 # Add Android Environment
 export ANDROID_HOME="$HOME/tools/android-sdk"
 
+# Add PhantomJS
+export PATH="$HOME/tools/phantomjs/bin:$PATH"
+
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-# removed bash_prompt from default setting. we use didferent bash prompt
-for file in ~/.{path,exports,aliases,functions,extra,bash_local}; do
+for file in ~/.{path,bash_prompt,exports,aliases,functions,extra,bash_local}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
