@@ -128,18 +128,31 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-surround'
 
 " do syntax check
-Plugin 'scrooloose/syntastic'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-" Toogle Syntastic check mode
-map <Leader>ts :SyntasticToggleMode<CR>
+" Plugin 'scrooloose/syntastic'
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" " Toogle Syntastic check mode
+" map <Leader>ts :SyntasticToggleMode<CR>
+"
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_javascript_checkers = ["eslint"]
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
+" use ale to replace syntastic since ale support async check
+Plugin 'w0rp/ale'
+
+" Write this in your vimrc file
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+set statusline+=%{ALEGetStatusLine()}
 
 " fuzzy file find
 Plugin 'kien/ctrlp.vim'
