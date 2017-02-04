@@ -13,6 +13,10 @@ Plugin 'gmarik/Vundle.vim'
 " Elixir syntax
 " Plugin 'elixir-lang/vim-elixir'
 
+" Dash
+Plugin 'rizzatti/dash.vim'
+nmap <silent> <leader>dc <Plug>DashSearch
+
 " Track the engine.
 Plugin 'SirVer/ultisnips'
 
@@ -98,7 +102,7 @@ noremap <F3> :Autoformat<CR><CR>
 
 Plugin 'Lokaltog/vim-easymotion'
 " Disable default mappings"
-let g:EasyMotion_do_mapping = 0 
+let g:EasyMotion_do_mapping = 0
 " `s{char}{char}{label}`
 " Need one more keystroke, but on average, it may be more comfortable.
 nmap s <Plug>(easymotion-overwin-f2)
@@ -109,7 +113,7 @@ map <Leader>jj <Plug>(easymotion-j)
 map <Leader>kk <Plug>(easymotion-k)
 
 Plugin 'rking/ag.vim'
-map <Leader>ag :Ag 
+map <Leader>ag :Ag
 
 Plugin 'vim-scripts/DrawIt'
 
@@ -135,6 +139,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
 
 " fuzzy file find
 Plugin 'kien/ctrlp.vim'
