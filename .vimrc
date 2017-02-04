@@ -144,6 +144,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 " fuzzy file find
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_by_filename = 0
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/node_modules/*,*/.venv/*
 
 " vim cscope
 " Plugin 'vim-scripts/cscope.vim'
