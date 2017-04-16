@@ -20,6 +20,17 @@ nmap <silent> <leader>dc <Plug>DashSearch
 " Track the engine.
 Plugin 'SirVer/ultisnips'
 
+" vim-tags: dependence: brew install ctags
+Plugin 'szw/vim-tags'
+let g:vim_tags_use_language_field = 1
+let g:vim_tags_auto_generate = 0
+" vim bugs: Generate tags in project root dir or vim will not jump to tags
+let g:vim_tags_directories = []
+
+" taglist
+Plugin 'vim-scripts/taglist.vim'
+nnoremap <silent> <F8> :TlistToggle<CR>
+
 " " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
 
@@ -113,7 +124,7 @@ map <Leader>jj <Plug>(easymotion-j)
 map <Leader>kk <Plug>(easymotion-k)
 
 Plugin 'rking/ag.vim'
-map <Leader>ag :Ag
+map <Leader>ag :Ag <right>
 
 Plugin 'vim-scripts/DrawIt'
 
@@ -319,6 +330,8 @@ let g:sexp_enable_insert_mode_mappings = 0"
 noremap <leader>c :! compass compile<CR>
 noremap <Leader>ff <PageDown>
 noremap <Leader>bb <PageUp>
+" remove ^M marks where file is edit in window
+noremap <Leader>cm :%s/\r//g<CR>
 
 " search/replace keymapping
 noremap rc :%s///cg<Left><Left><Left><Left>
