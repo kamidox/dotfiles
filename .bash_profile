@@ -1,3 +1,6 @@
+# ==============================================================================
+# START of Customize
+# ==============================================================================
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:/usr/local/sbin:$(brew --prefix coreutils)/libexec/gnubin:$PATH";
 
@@ -7,6 +10,11 @@ export ANDROID_HOME="$HOME/tools/android-sdk"
 # Add PhantomJS
 export PATH="$HOME/tools/phantomjs/bin:$PATH"
 
+# Workaround FIX: jupter notebook bugs https://github.com/jupyter/notebook/issues/2438
+export BROWSER=open
+# ==============================================================================
+# End of Customize
+# ==============================================================================
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
