@@ -1,0 +1,17 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "editor.fontSize": 14,
+    // Enable / disable JavaScript validation
+    "javascript.validate.enable": false,
+    // Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the files.exclude setting.
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/dist": true
+    }
+,
+"vsicons.dontShowNewVersionMessage": true,
+"workbench.iconTheme": "vscode-icons",
+"editor.minimap.enabled": false,
+"workbench.colorTheme": "Monokai"
+}

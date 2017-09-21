@@ -1,0 +1,9 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    { "key": "cmd+r",           "command": "workbench.action.gotoSymbol" },
+    { "key": "shift+cmd+r",     "command": "workbench.action.tasks.runTask" },
+    { "key": "cmd+[",           "command": "workbench.action.navigateBack" },
+    { "key": "cmd+]",           "command": "workbench.action.navigateForward" },
+    { "key": "shift+cmd+i",                 "command": "editor.action.previewDeclaration",
+        "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor" }
+]
