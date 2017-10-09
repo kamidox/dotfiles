@@ -4,6 +4,7 @@
     { "key": "shift+cmd+r",     "command": "workbench.action.tasks.runTask" },
     { "key": "cmd+[",           "command": "workbench.action.navigateBack" },
     { "key": "cmd+]",           "command": "workbench.action.navigateForward" },
+    { "key": "cmd+p",                 "command": "workbench.action.quickOpen" },
     { "key": "shift+cmd+i",                 "command": "editor.action.previewDeclaration",
         "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor" }
 ]
