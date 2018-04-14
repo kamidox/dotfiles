@@ -12,6 +12,34 @@ export PATH="$HOME/tools/phantomjs/bin:$PATH"
 
 # Workaround FIX: jupter notebook bugs https://github.com/jupyter/notebook/issues/2438
 export BROWSER=open
+
+# brew binary mirror: tsinghua
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
+
+function cd() {
+  if [ "$#" = "0" ]
+  then
+  pushd ${HOME} > /dev/null
+  elif [ -f "${1}" ]
+  then
+    ${EDITOR} ${1}
+  else
+  pushd "$1" > /dev/null
+  fi
+}
+
+function bd(){
+  if [ "$#" = "0" ]
+  then
+    popd > /dev/null
+  else
+    for i in $(seq ${1})
+    do
+      popd > /dev/null
+    done
+  fi
+}
+
 # ==============================================================================
 # End of Customize
 # ==============================================================================
