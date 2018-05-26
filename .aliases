@@ -22,6 +22,9 @@ else # OS X `ls`
 	colorflag="-G"
 fi
 
+# Directory size
+alias ds="du -h -d 0 "
+
 # List all files colorized in long format
 alias l="ls -lF ${colorflag}"
 
@@ -46,6 +49,9 @@ alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date
 
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup'
+
+# Update python packages
+alias update-py='pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install --upgrade'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -157,3 +163,10 @@ alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
 # send color to anybar
 function anydot { echo -n $1 | nc -4u -w0 localhost ${2:-1738};  }
+
+# npm mirror from taobao.org
+alias cnpm="npm --registry=https://registry.npm.taobao.org \
+--cache=$HOME/.npm/.cache/cnpm \
+--disturl=https://npm.taobao.org/dist \
+--userconfig=$HOME/.cnpmrc"
+
