@@ -2,13 +2,16 @@
 # START of Customize
 # ==============================================================================
 # Add `~/bin` to the `$PATH`
-export PATH="$HOME/bin:/usr/local/sbin:$(brew --prefix coreutils)/libexec/gnubin:$PATH";
+export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$(brew --prefix coreutils)/libexec/gnubin:$PATH";
 
 # Add Android Environment
 export ANDROID_HOME="$HOME/tools/android-sdk"
 
+# Add java home
+export JAVA_HOME=$(/usr/libexec/java_home)
+
 # Add PhantomJS
-export PATH="$HOME/tools/phantomjs/bin:$PATH"
+export PATH="$PATH:$HOME/tools/phantomjs/bin"
 
 # Workaround FIX: jupter notebook bugs https://github.com/jupyter/notebook/issues/2438
 export BROWSER=open
