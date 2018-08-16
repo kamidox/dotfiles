@@ -81,6 +81,7 @@ plugins=(
   osx
 )
 
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -88,7 +89,7 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.aliases
 source $HOME/.exports
 
-source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+# source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
