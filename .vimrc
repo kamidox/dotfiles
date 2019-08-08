@@ -30,6 +30,12 @@ let g:vim_tags_directories = []
 " taglist
 Plugin 'vim-scripts/taglist.vim'
 nnoremap <silent> <F8> :TlistToggle<CR>
+map <C-l> :TlistToggle<CR>
+let Tlist_WinWidth = 30
+let Tlist_Use_Right_Window = 1
+let Tlist_Show_One_File = 1
+let Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_Close_On_Select = 1
 
 " " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
@@ -160,6 +166,7 @@ let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'python': ['pylint'],
 \}
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
@@ -186,6 +193,12 @@ Plugin 'tpope/vim-dispatch'
 
 " precision editing for s-expression
 Plugin 'guns/vim-sexp'
+
+" erlang plugins
+Plugin 'vim-erlang/vim-erlang-runtime'
+Plugin 'vim-erlang/vim-erlang-compiler'
+Plugin 'vim-erlang/vim-erlang-omnicomplete'
+Plugin 'vim-erlang/vim-erlang-tags'
 
 " clojure runtime files
 Plugin 'guns/vim-clojure-static'
@@ -239,12 +252,12 @@ set secure
 set number
 " Enable syntax highlighting
 syntax on
-" Highlight current line
-set cursorline
-" Make tabs as wide as two spaces
+" Make tabs as wide as four spaces
 set tabstop=4
 set shiftwidth=4
 set expandtab
+" Highlight current line
+set cursorline
 " Show “invisible” characters
 " set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 set lcs=tab:▸\ ,trail:·
@@ -275,8 +288,8 @@ set title
 set showcmd
 " Use relative line numbers
 "if exists("&relativenumber")
-"	set relativenumber
-"	au BufReadPost * set relativenumber
+"set relativenumber
+"au BufReadPost * set relativenumber
 "endif
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
@@ -309,6 +322,13 @@ au FileType css setl sw=2 sts=2 et
 au FileType elm setl sw=2 sts=2 et
 au FileType go setl sw=2 sts=2 et
 
+augroup python_files
+    autocmd!
+    autocmd FileType python set expandtab
+    autocmd FileType python set tabstop=4
+    autocmd FileType python set shiftwidth=4
+augroup END
+
 set t_Co=256
 
 " Enable Rainbow Parentheses when dealing with Clojure files
@@ -326,12 +346,19 @@ autocmd FileType clojure setlocal lispwords+=describe,it,testing,facts,fact,prov
 " Disable some irritating mappings
 let g:sexp_enable_insert_mode_mappings = 0"
 
+" Set file encoding chains
+set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
+" Reload file with GB18030
+noremap <leader>gb :e ++enc=gb18030<CR>
+
 " basic keymapping
 noremap <leader>c :! compass compile<CR>
 noremap <Leader>ff <PageDown>
 noremap <Leader>bb <PageUp>
 " remove ^M marks where file is edit in window
 noremap <Leader>cm :%s/\r//g<CR>
+" delete current buffer
+noremap <Leader>db :bdelete<CR>
 
 " search/replace keymapping
 noremap rc :%s///cg<Left><Left><Left><Left>
