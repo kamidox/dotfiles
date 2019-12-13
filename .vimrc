@@ -92,6 +92,8 @@ map <Leader>jd :YcmCompleter GoToDefinition<CR>
 map <Leader>ji :YcmCompleter GoToInclude<CR>
 map <Leader>jr :YcmCompleter GoToReferences<CR>
 map <Leader>dd :YcmCompleter GetDoc<CR>
+let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_confirm_extra_conf = 0
 
 Plugin 'jiangmiao/auto-pairs'
 
