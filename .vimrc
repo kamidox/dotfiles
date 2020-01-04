@@ -92,8 +92,11 @@ map <Leader>jd :YcmCompleter GoToDefinition<CR>
 map <Leader>ji :YcmCompleter GoToInclude<CR>
 map <Leader>jr :YcmCompleter GoToReferences<CR>
 map <Leader>dd :YcmCompleter GetDoc<CR>
-let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_min_num_of_chars_for_completion = 1
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_enable_diagnostic_highlighting = 0
+let g:ycm_echo_current_diagnostic = 0
 
 Plugin 'jiangmiao/auto-pairs'
 
@@ -161,7 +164,7 @@ Plugin 'tpope/vim-surround'
 " let g:syntastic_javascript_checkers = ["eslint"]
 
 " use ale to replace syntastic since ale support async check
-Plugin 'w0rp/ale'
+Plugin 'dense-analysis/ale'
 
 " Write this in your vimrc file
 let g:ale_lint_on_save = 1
@@ -169,10 +172,16 @@ let g:ale_lint_on_text_changed = 0
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'python': ['pylint'],
+\   'c': ['clang'],
 \}
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 set statusline+=%{ALEGetStatusLine()}
+
+" Plugin to support load local vimrc
+Plugin 'LucHermitte/lh-vim-lib'
+Plugin 'LucHermitte/local_vimrc'
+let g:local_vimrc = ['.local_vimrc', '_vimrc_local.vim']
 
 " fuzzy file find
 Plugin 'kien/ctrlp.vim'
@@ -357,6 +366,7 @@ noremap <leader>gb :e ++enc=gb18030<CR>
 noremap <leader>c :! compass compile<CR>
 noremap <Leader>ff <PageDown>
 noremap <Leader>bb <PageUp>
+noremap <Leader>ww <C-w>w
 " remove ^M marks where file is edit in window
 noremap <Leader>cm :%s/\r//g<CR>
 " delete current buffer
