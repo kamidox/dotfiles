@@ -3,32 +3,48 @@ filetype off                  " required
 " Change mapleader
 let mapleader=","
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+" Plugins will be downloaded under the specified directory.
+" https://github.com/junegunn/vim-plug
+call plug#begin('~/.vim/plugged')
 
 " Elixir syntax
-" Plugin 'elixir-lang/vim-elixir'
+" Plug 'elixir-lang/vim-elixir'
 
 " Dash
-Plugin 'rizzatti/dash.vim'
-nmap <silent> <leader>dc <Plug>DashSearch
+" Plug 'rizzatti/dash.vim'
+" nmap <silent> <leader>dc <Plug>DashSearch
 
-" Track the engine.
-Plugin 'SirVer/ultisnips'
+" Snippets engine.
+Plug 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-x>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
-" vim-tags: dependence: brew install ctags
-Plugin 'szw/vim-tags'
-let g:vim_tags_use_language_field = 1
-let g:vim_tags_auto_generate = 0
-" vim bugs: Generate tags in project root dir or vim will not jump to tags
-let g:vim_tags_directories = []
+" vim tags depending on universal-ctags
+" https://github.com/universal-ctags/ctags
+" brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+Plug 'ludovicchabant/vim-gutentags'
+set tags=./.tags;,.tags
+" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+" 所生成的数据文件的名称
+let g:gutentags_ctags_tagfile = '.tags'
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+" 配置 ctags 的参数
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
 " taglist
-Plugin 'vim-scripts/taglist.vim'
+Plug 'vim-scripts/taglist.vim'
 nnoremap <silent> <F8> :TlistToggle<CR>
 map <C-l> :TlistToggle<CR>
 let Tlist_WinWidth = 30
@@ -37,27 +53,22 @@ let Tlist_Show_One_File = 1
 let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Close_On_Select = 1
 
-" " Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
-
-" " Trigger configuration. Do not use <tab> if you use
-" https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-x>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+if has('nvim') || has('patch-8.0.902')
+  Plug 'mhinz/vim-signify'
+else
+  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+endif
+map <C-d> :SignifyDiff<CR>
 
 " filesystem tree
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 map <C-n> :NERDTreeToggle<CR>
 map <Leader>n :NERDTree %:p:h<CR>
 
-Plugin 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 nmap <leader>1 <Plug>AirlineSelectTab1
@@ -72,11 +83,11 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 nmap <leader>- <Plug>AirlineSelectPrevTab
 nmap <leader>+ <Plug>AirlineSelectNextTab
 
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'mattn/emmet-vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'mattn/emmet-vim'
 
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 let g:vim_markdown_no_default_key_mappings = 1
 let g:vim_markdown_toc_autofit = 1
 let g:vim_markdown_conceal = 0
@@ -86,7 +97,7 @@ map <Leader>th :Toch<CR>
 " Format table
 map <Leader>ft :TableFormat<CR>
 
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 map <Leader>jg :YcmCompleter GoTo<CR>
 map <Leader>jd :YcmCompleter GoToDefinition<CR>
 map <Leader>ji :YcmCompleter GoToInclude<CR>
@@ -98,31 +109,31 @@ let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_echo_current_diagnostic = 0
 
-Plugin 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 
 " quick google search
-Plugin 'szw/vim-g'
+Plug 'szw/vim-g'
 
-Plugin 'vim-ruby/vim-ruby'
+" Plug 'vim-ruby/vim-ruby'
 
-" Plugin 'wlangstroth/vim-racket'
+" Plug 'wlangstroth/vim-racket'
 
-" Plugin 'fatih/vim-go'
+" Plug 'fatih/vim-go'
 
-Plugin 'cakebaker/scss-syntax.vim'
+Plug 'cakebaker/scss-syntax.vim'
 
-Plugin 'chrisbra/Colorizer'
+Plug 'chrisbra/Colorizer'
 
 :let g:colorizer_auto_color = 1
 :let g:colorizer_auto_filetype='less,sass,scss,js,css,html'
 let g:colorizer_syntax = 1
 
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 
-Plugin 'Chiel92/vim-autoformat'
+Plug 'Chiel92/vim-autoformat'
 noremap <F3> :Autoformat<CR><CR>
 
-Plugin 'Lokaltog/vim-easymotion'
+Plug 'Lokaltog/vim-easymotion'
 " Disable default mappings"
 let g:EasyMotion_do_mapping = 0
 " `s{char}{char}{label}`
@@ -134,41 +145,29 @@ let g:EasyMotion_smartcase = 1
 map <Leader>jj <Plug>(easymotion-j)
 map <Leader>kk <Plug>(easymotion-k)
 
-Plugin 'rking/ag.vim'
+Plug 'rking/ag.vim'
 map <Leader>ag :Ag <right>
 
-Plugin 'vim-scripts/DrawIt'
+" Plug 'vim-scripts/DrawIt'
 
-Plugin 'tpope/vim-eunuch'
+Plug 'tpope/vim-eunuch'
 
-Plugin 'vim-scripts/DeleteTrailingWhitespace'
+Plug 'vim-scripts/DeleteTrailingWhitespace'
 
 " all lanugage support
-Plugin 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 
 " change surroundins - cs/ds/ysiw/yss
-Plugin 'tpope/vim-surround'
-
-" do syntax check
-" Plugin 'scrooloose/syntastic'
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" " Toogle Syntastic check mode
-" map <Leader>ts :SyntasticToggleMode<CR>
-"
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_javascript_checkers = ["eslint"]
+Plug 'tpope/vim-surround'
 
 " use ale to replace syntastic since ale support async check
-Plugin 'dense-analysis/ale'
+Plug 'dense-analysis/ale'
 
 " Write this in your vimrc file
 let g:ale_lint_on_save = 1
+let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_text_changed = 0
+let g:ale_echo_msg_format = '[%linter%] %code: %%s'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'python': ['pylint'],
@@ -178,47 +177,50 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 set statusline+=%{ALEGetStatusLine()}
 
-" Plugin to support load local vimrc
-Plugin 'LucHermitte/lh-vim-lib'
-Plugin 'LucHermitte/local_vimrc'
+" Plug to support load local vimrc
+Plug 'LucHermitte/lh-vim-lib'
+Plug 'LucHermitte/local_vimrc'
 let g:local_vimrc = ['.local_vimrc', '_vimrc_local.vim']
 
 " fuzzy file find
-Plugin 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 let g:ctrlp_by_filename = 0
+let g:ctrlp_root_markers = ['.root', '.project']
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/node_modules/*,*/.venv/*
+map <c-b> :CtrlPBuffer<CR>
+map <c-t> :CtrlPBufTag<CR>
 
 " vim cscope
-" Plugin 'vim-scripts/cscope.vim'
+" Plug 'vim-scripts/cscope.vim'
 
 " Elm lang
-" Plugin 'lambdatoast/elm.vim'
+" Plug 'lambdatoast/elm.vim'
 
 " ansible yaml support
-Plugin 'chase/vim-ansible-yaml'
+Plug 'chase/vim-ansible-yaml'
 
 " fireplace for clojure
-Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-classpath'
-Plugin 'tpope/vim-dispatch'
+Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-classpath'
+Plug 'tpope/vim-dispatch'
 
 " precision editing for s-expression
-Plugin 'guns/vim-sexp'
+" Plug 'guns/vim-sexp'
 
 " erlang plugins
-Plugin 'vim-erlang/vim-erlang-runtime'
-Plugin 'vim-erlang/vim-erlang-compiler'
-Plugin 'vim-erlang/vim-erlang-omnicomplete'
-Plugin 'vim-erlang/vim-erlang-tags'
+" Plug 'vim-erlang/vim-erlang-runtime'
+" Plug 'vim-erlang/vim-erlang-compiler'
+" Plug 'vim-erlang/vim-erlang-omnicomplete'
+" Plug 'vim-erlang/vim-erlang-tags'
 
 " clojure runtime files
-Plugin 'guns/vim-clojure-static'
-Plugin 'guns/vim-clojure-highlight'
+" Plug 'guns/vim-clojure-static'
+" Plug 'guns/vim-clojure-highlight'
 
-Plugin 'kien/rainbow_parentheses.vim'
+" Initialize plugin system
+" https://github.com/junegunn/vim-plug
+call plug#end()
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
 filetype plugin indent on    " required
 
 " Use the Solarized Dark theme
@@ -269,6 +271,7 @@ set shiftwidth=4
 set expandtab
 " Highlight current line
 set cursorline
+" highlight cursorline ctermfg=white ctermbg=yellow cterm=bold guifg=white guibg=yellow gui=bold
 " Show “invisible” characters
 " set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 set lcs=tab:▸\ ,trail:·
@@ -341,18 +344,6 @@ augroup python_files
 augroup END
 
 set t_Co=256
-
-" Enable Rainbow Parentheses when dealing with Clojure files
-au FileType clojure RainbowParenthesesActivate
-au Syntax * RainbowParenthesesLoadRound
-
-" This should enable Emacs like indentation
-let g:clojure_fuzzy_indent=1
-let g:clojure_align_multiline_strings = 1
-
-" Add some words which should be indented like defn etc: Compojure/compojure-api, midje and schema stuff mostly.
-let g:clojure_fuzzy_indent_patterns=['^GET', '^POST', '^PUT', '^DELETE', '^ANY', '^HEAD', '^PATCH', '^OPTIONS', '^def']
-autocmd FileType clojure setlocal lispwords+=describe,it,testing,facts,fact,provided
 
 " Disable some irritating mappings
 let g:sexp_enable_insert_mode_mappings = 0"
