@@ -60,6 +60,16 @@ else
 endif
 map <C-d> :SignifyDiff<CR>
 
+Plug 'skywind3000/asyncrun.vim'
+let g:asyncrun_open = 15
+let g:asyncrun_bell = 1
+let g:asyncrun_rootmarks = ['.svn', '.git', '.project', '.root', '_darcs', 'build.xml']
+nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
+nnoremap <leader>m  :AsyncRun -cwd=<root> -raw make test_target PLATFORM=Darwin UNITTEST=yes<cr>
+nnoremap <leader>t  :AsyncRun -cwd=<root> -raw make test PLATFORM=Darwin UNITTEST=yes<cr>
+nnoremap <leader>ta  :AsyncRun -cwd=<root> -raw make cleanall && make setup && make test PLATFORM=Darwin UNITTEST=yes<cr>
+nnoremap <leader>ts  :AsyncRun -cwd=<root> -raw make setup && make test PLATFORM=Darwin UNITTEST=yes<cr>
+
 " filesystem tree
 Plug 'scrooloose/nerdtree'
 autocmd StdinReadPre * let s:std_in=1
@@ -69,19 +79,19 @@ map <C-n> :NERDTreeToggle<CR>
 map <Leader>n :NERDTree %:p:h<CR>
 
 Plug 'vim-airline/vim-airline'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
-nmap <leader>- <Plug>AirlineSelectPrevTab
-nmap <leader>+ <Plug>AirlineSelectNextTab
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#buffer_idx_mode = 1
+" nmap <leader>1 <Plug>AirlineSelectTab1
+" nmap <leader>2 <Plug>AirlineSelectTab2
+" nmap <leader>3 <Plug>AirlineSelectTab3
+" nmap <leader>4 <Plug>AirlineSelectTab4
+" nmap <leader>5 <Plug>AirlineSelectTab5
+" nmap <leader>6 <Plug>AirlineSelectTab6
+" nmap <leader>7 <Plug>AirlineSelectTab7
+" nmap <leader>8 <Plug>AirlineSelectTab8
+" nmap <leader>9 <Plug>AirlineSelectTab9
+" nmap <leader>- <Plug>AirlineSelectPrevTab
+" nmap <leader>+ <Plug>AirlineSelectNextTab
 
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/emmet-vim'
@@ -217,16 +227,28 @@ Plug 'tpope/vim-dispatch'
 " Plug 'guns/vim-clojure-static'
 " Plug 'guns/vim-clojure-highlight'
 
+" colorschemes
+" for more vim color schemes, visit https://vimcolors.com
+Plug 'joshdick/onedark.vim'
+Plug 'doums/darcula'
+Plug 'crusoexia/vim-monokai'
+
 " Initialize plugin system
 " https://github.com/junegunn/vim-plug
 call plug#end()
 
 filetype plugin indent on    " required
+" Auto source .vimrc when save it
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
-" Use the Solarized Dark theme
-set background=light
-colorscheme solarized
-let g:solarized_termtrans=1
+" choose color scheme
+set background=dark
+" colorscheme onedark
+" colorscheme solarized
+" let g:solarized_termtrans=1
+" colorscheme xcodedark
+" colorscheme darcula
+colorscheme monokai
 
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
@@ -357,7 +379,18 @@ noremap <leader>gb :e ++enc=gb18030<CR>
 noremap <leader>c :! compass compile<CR>
 noremap <Leader>ff <PageDown>
 noremap <Leader>bb <PageUp>
+" windows
 noremap <Leader>ww <C-w>w
+noremap <Leader>wh <C-w>h
+noremap <Leader>wl <C-w>l
+noremap <Leader>wj <C-w>j
+noremap <Leader>wk <C-w>k
+noremap <Leader>wc :close<CR>
+" tabpage
+noremap <Leader>te :tabe<CR>
+noremap <Leader>tn gt<CR>
+noremap <Leader>tp gT<CR>
+
 " remove ^M marks where file is edit in window
 noremap <Leader>cm :%s/\r//g<CR>
 " delete current buffer
