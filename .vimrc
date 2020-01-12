@@ -183,6 +183,7 @@ let g:ale_linters = {
 \   'python': ['pylint'],
 \   'c': ['clang'],
 \}
+let g:ale_c_clang_options = '-std=c99 -Wall -I./**'
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 set statusline+=%{ALEGetStatusLine()}
