@@ -7,8 +7,15 @@ export ANDROID_HOME="$HOME/tools/android-sdk"
 # Add java home
 export JAVA_HOME=$(/usr/libexec/java_home)
 
+# Add maven
+export PATH="$PATH:$HOME/tools/apache-maven-3.6.1/bin"
+
 # Add PhantomJS
 export PATH="$PATH:$HOME/tools/phantomjs/bin"
+
+# Add Flutter & Dart
+export PATH="$PATH:$HOME/tools/flutter/bin:$HOME/tools/flutter/bin/cache/dart-sdk/bin"
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 # Workaround FIX: jupter notebook bugs https://github.com/jupyter/notebook/issues/2438
 export BROWSER=open
@@ -79,6 +86,7 @@ ZSH_THEME="ys"
 plugins=(
   git
   osx
+  autojump
 )
 
 
@@ -88,6 +96,8 @@ source $ZSH/oh-my-zsh.sh
 
 source $HOME/.aliases
 source $HOME/.exports
+
+setopt no_nomatch
 
 # source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
