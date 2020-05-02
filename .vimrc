@@ -128,7 +128,8 @@ Plug 'szw/vim-g'
 
 " Plug 'wlangstroth/vim-racket'
 
-" Plug 'fatih/vim-go'
+Plug 'fatih/vim-go'
+map <Leader>Gt :GoTest<CR>
 
 Plug 'cakebaker/scss-syntax.vim'
 
@@ -183,7 +184,8 @@ let g:ale_linters = {
 \   'python': ['pylint'],
 \   'c': ['clang'],
 \}
-let g:ale_c_clang_options = '-std=c99 -Wall -I./**'
+let g:ale_c_clang_options = '-std=c99 -Wall'
+let g:ale_cpp_clang_options = '-std=c++14 -Wall'
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 set statusline+=%{ALEGetStatusLine()}
@@ -196,7 +198,7 @@ let g:local_vimrc = ['.local_vimrc', '_vimrc_local.vim']
 " fuzzy file find
 Plug 'kien/ctrlp.vim'
 let g:ctrlp_by_filename = 0
-let g:ctrlp_root_markers = ['.root', '.project']
+let g:ctrlp_root_markers = ['.root', '.project', '.git', '.svn', '.hg']
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/node_modules/*,*/.venv/*
 map <c-b> :CtrlPBuffer<CR>
 map <c-t> :CtrlPBufTag<CR>
@@ -245,11 +247,11 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 " choose color scheme
 set background=dark
 " colorscheme onedark
-" colorscheme solarized
-" let g:solarized_termtrans=1
+colorscheme solarized
+let g:solarized_termtrans=1
 " colorscheme xcodedark
 " colorscheme darcula
-colorscheme monokai
+" colorscheme monokai
 
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
@@ -357,7 +359,7 @@ au FileType scss setl sw=2 sts=2 et
 au FileType html setl sw=2 sts=2 et
 au FileType css setl sw=2 sts=2 et
 au FileType elm setl sw=2 sts=2 et
-au FileType go setl sw=2 sts=2 et
+au FileType go setl sw=4 sts=4 noexpandtab
 
 augroup python_files
     autocmd!
@@ -415,9 +417,9 @@ noremap <leader>ct :! lein test<CR>
 noremap <leader>ce :Eval<CR>
 
 " golang keymapping
-noremap <leader>gd :! go get<CR>
-noremap <leader>gc :! make<CR>
-noremap <leader>gt :! make test<CR>
+noremap <leader>gr :GoRun<CR>
+noremap <leader>gb :GoBuild<CR>
+noremap <leader>gt :GoTest<CR>
 
 " tcl keymapping
 noremap <leader>tt :set noexpandtab<CR>
