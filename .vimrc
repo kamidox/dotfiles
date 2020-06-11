@@ -129,7 +129,10 @@ Plug 'szw/vim-g'
 " Plug 'wlangstroth/vim-racket'
 
 Plug 'fatih/vim-go'
-map <Leader>Gt :GoTest<CR>
+let g:go_def_mapping_enabled = 0
+let g:go_term_enabled = 1
+let g:go_term_mode = "split"
+let g:go_term_close_on_exit = 0
 
 Plug 'cakebaker/scss-syntax.vim'
 
@@ -420,6 +423,8 @@ noremap <leader>ce :Eval<CR>
 noremap <leader>gr :GoRun<CR>
 noremap <leader>gb :GoBuild<CR>
 noremap <leader>gt :GoTest<CR>
+noremap <leader>gD :GoDoc<CR><CR>
+noremap <leader>gd :GoDef<CR>
 
 " tcl keymapping
 noremap <leader>tt :set noexpandtab<CR>

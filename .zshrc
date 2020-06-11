@@ -17,6 +17,9 @@ export PATH="$PATH:$HOME/tools/phantomjs/bin"
 export PATH="$PATH:$HOME/tools/flutter/bin:$HOME/tools/flutter/bin/cache/dart-sdk/bin"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
+# Add go
+export PATH=$PATH:/usr/local/go/bin
+
 # Workaround FIX: jupter notebook bugs https://github.com/jupyter/notebook/issues/2438
 export BROWSER=open
 
