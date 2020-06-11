@@ -1,5 +1,19 @@
+PROFILE_STARTUP=false
+if [[ "$PROFILE_STARTUP" == true ]]; then
+    zmodload zsh/datetime
+    setopt PROMPT_SUBST
+    PS4='+$EPOCHREALTIME %N:%i> '
+
+    logfile=$(mktemp zsh_profile.XXXXXXXX)
+    echo "Logging to $logfile"
+    exec 3>&2 2>$logfile
+
+    setopt XTRACE
+fi
+
 # If you come from bash you might have to change your $PATH.
-export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$(brew --prefix coreutils)/libexec/gnubin:$PATH";
+# Profile: hardcode path instead of $(brew --prefix coreutils) to improve zsh startup time
+export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH";
 
 # Add Android Environment
 export ANDROID_HOME="$HOME/tools/android-sdk"
@@ -12,7 +26,6 @@ export PATH="$PATH:$HOME/tools/apache-maven-3.6.1/bin"
 
 # Add PhantomJS
 export PATH="$PATH:$HOME/tools/phantomjs/bin"
-
 # Add Flutter & Dart
 export PATH="$PATH:$HOME/tools/flutter/bin:$HOME/tools/flutter/bin/cache/dart-sdk/bin"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
@@ -130,3 +143,9 @@ setopt no_nomatch
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+if [[ "$PROFILE_STARTUP" == true ]]; then
+    unsetopt XTRACE
+    exec 2>&3 3>&-
+fi
+
