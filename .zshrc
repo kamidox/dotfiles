@@ -32,6 +32,8 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 # Add go
 export PATH=$PATH:/usr/local/go/bin
+# Use aliyun go mirror
+export GOPROXY=https://mirrors.aliyun.com/goproxy/
 
 # Workaround FIX: jupter notebook bugs https://github.com/jupyter/notebook/issues/2438
 export BROWSER=open
