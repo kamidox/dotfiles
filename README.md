@@ -1,6 +1,5 @@
 ## Joey's dotfiles
 
-
 This is a derived work from Mathias's dotfiles. Consider to use his setup directly. See: https://github.com/mathiasbynens/dotfiles.
 
 Disclaimer: I have tuned the dotfiles for my own use. Some of the setup may not be good for you.
@@ -17,7 +16,6 @@ Chaged to Mathias's dotfiles:
 ```bash
 cd $HOME
 git clone https://github.com/mathiasbynens/dotfiles.git && cd dotfiles
-git submodule init && git submodule update
 source bootstrap.sh
 ```
 
@@ -97,7 +95,7 @@ You could also use `~/.extra` to override settings, functions and aliases from m
 When setting up a new Mac, you may want to set some sensible OS X defaults:
 
 ```bash
-./.osx
+./.macos
 ```
 
 ### Install Homebrew formulae
