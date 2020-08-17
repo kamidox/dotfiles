@@ -103,6 +103,7 @@ ZSH_THEME="ys"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  z
   osx
   autojump
 )
