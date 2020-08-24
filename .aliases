@@ -13,6 +13,7 @@ alias dt="cd ~/Desktop"
 alias w="cd ~/work"
 alias g="git"
 alias h="history"
+alias venv="source .venv/bin/activate"
 
 alias -s html=vim    # 在命令行直接输入后缀为 html 的文件名，会在 TextMate 中打开
 alias -s rb=vim      # 在命令行直接输入 ruby 文件，会在 TextMate 中打开
