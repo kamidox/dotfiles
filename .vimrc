@@ -107,17 +107,17 @@ map <Leader>th :Toch<CR>
 " Format table
 map <Leader>ft :TableFormat<CR>
 
-Plug 'Valloric/YouCompleteMe'
-map <Leader>jg :YcmCompleter GoTo<CR>
-map <Leader>jd :YcmCompleter GoToDefinition<CR>
-map <Leader>ji :YcmCompleter GoToInclude<CR>
-map <Leader>jr :YcmCompleter GoToReferences<CR>
-map <Leader>dd :YcmCompleter GetDoc<CR>
-let g:ycm_min_num_of_chars_for_completion = 1
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_enable_diagnostic_signs = 0
-let g:ycm_enable_diagnostic_highlighting = 0
-let g:ycm_echo_current_diagnostic = 0
+" Plug 'Valloric/YouCompleteMe'
+" map <Leader>jg :YcmCompleter GoTo<CR>
+" map <Leader>jd :YcmCompleter GoToDefinition<CR>
+" map <Leader>ji :YcmCompleter GoToInclude<CR>
+" map <Leader>jr :YcmCompleter GoToReferences<CR>
+" map <Leader>dd :YcmCompleter GetDoc<CR>
+" let g:ycm_min_num_of_chars_for_completion = 1
+" let g:ycm_confirm_extra_conf = 0
+" let g:ycm_enable_diagnostic_signs = 0
+" let g:ycm_enable_diagnostic_highlighting = 0
+" let g:ycm_echo_current_diagnostic = 0
 
 Plug 'jiangmiao/auto-pairs'
 
@@ -191,7 +191,7 @@ let g:ale_c_clang_options = '-std=c99 -Wall'
 let g:ale_cpp_clang_options = '-std=c++14 -Wall'
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
-set statusline+=%{ALEGetStatusLine()}
+" set statusline+=%{ALEGetStatusLine()}
 
 " Plug to support load local vimrc
 Plug 'LucHermitte/lh-vim-lib'
